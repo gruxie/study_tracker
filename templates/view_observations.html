@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Observation Browser</h2>
+
+<h3>Add New Observation</h3>
+<form method="POST">
+    <label for="project_number">Project Number:</label>
+    <select id="project_number" name="project_number" required>
+        {% for project in projects %}
+            <option value="{{ project.unique_number }}">{{ project.unique_number }} - {{ project.title }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label for="subject_number">Subject Number:</label>
+    <select id="subject_number" name="subject_number" required>
+        {% for subject in subjects %}
+            <option value="{{ subject.subject_number }}">{{ subject.subject_number }} - {{ subject.first_name }} {{ subject.last_name }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label for="observation">Observation:</label>
+    <textarea id="observation" name="observation" maxlength="1000" required></textarea><br>
+
+    <button type="submit">Add Observation</button>
+</form>
+
+<h3>Existing Observations</h3>
+<table>
+    <tr>
+        <th>Observation ID</th>
+        <th>Project Number</th>
+        <th>Subject Number</th>
+        <th>Observation</th>
+    </tr>
+    {% for obs in observations %}
+    <tr>
+        <td>{{ obs.unique_observation_id }}</td>
+        <td>{{ obs.project_number }}</td>
+        <td>{{ obs.subject_number }}</td>
+        <td>{{ obs.observation }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

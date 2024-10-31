@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Subject Browser</h2>
+
+<h3>Add New Subject</h3>
+<form method="POST">
+    <label for="project_number">Project Number:</label>
+    <select id="project_number" name="project_number" required>
+        {% for project in projects %}
+            <option value="{{ project.unique_number }}">{{ project.unique_number }} - {{ project.title }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label for="subject_number">Subject Number:</label>
+    <input type="number" id="subject_number" name="subject_number" required><br>
+
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name" required><br>
+
+    <label for="middle_name">Middle Name:</label>
+    <input type="text" id="middle_name" name="middle_name"><br>
+
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" name="last_name" required><br>
+
+    <label for="nick_name">Nick Name:</label>
+    <input type="text" id="nick_name" name="nick_name"><br>
+
+    <label for="phone">Phone Number (###-###-####):</label>
+    <input type="text" id="phone" name="phone" required><br>
+
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="url">Photo URL:</label>
+    <input type="url" id="url" name="url"><br>
+
+    <button type="submit">Add Subject</button>
+</form>
+
+<h3>Existing Subjects</h3>
+<table>
+    <tr>
+        <th>Project Number</th>
+        <th>Subject Number</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Photo</th>
+    </tr>
+    {% for subject in subjects %}
+    <tr>
+        <td>{{ subject.project_number }}</td>
+        <td>{{ subject.subject_number }}</td>
+        <td>{{ subject.first_name }} {{ subject.middle_name }} {{ subject.last_name }} ({{ subject.nick_name }})</td>
+        <td>{{ subject.phone }}</td>
+        <td>{{ subject.email }}</td>
+        <td><a href="{{ subject.url }}" target="_blank">View Photo</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

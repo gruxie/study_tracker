@@ -1,0 +1,14 @@
+[
+    {
+        "unique_number": 1,
+        "title": "First project",
+        "description": "This is a short description do what you can to keep it short, ok?",
+        "tags": [
+            "foo",
+            "bar",
+            "jar",
+            "me",
+            "you"
+        ]
+    }
+]

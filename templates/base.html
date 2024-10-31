@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Study Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <header>
+        <h1>Study Tracker Portal</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('projects') }}">Projects</a>
+            <a href="{{ url_for('subjects') }}">Subjects</a>
+            <a href="{{ url_for('observations') }}">Observations</a>
+        </nav>
+    </header>
+    <main>
+        <section id="notifications">
+            <h2>Notifications</h2>
+            <p>
+                Howdy!  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod lacus in mi consequat, 
+                ac venenatis purus tincidunt. Sed at risus eget lorem aliquet pretium.
+            </p>
+        </section>
+        <section id="updates">
+            <h2>Updates</h2>
+            <p>
+                Nulla facilisi. Proin eget tortor risus. Donec rutrum congue leo eget malesuada. 
+                Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.
+            </p>
+        </section>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class="flashes">
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Study Tracker</p>
+    </footer>
+</body>
+</html>
